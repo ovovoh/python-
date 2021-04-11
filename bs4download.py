@@ -18,10 +18,8 @@ for i in range(1,1209):
             url_list.append(src_download)
         # 删除重复错误的的链接
         url_list.remove("http://www.netbian.comhttps://pic.netbian.com/")
-        url_list.remove("http://www.netbian.comhttps://pic.netbian.com/")
-        
-        print(url_list)
-        
+        url_list.remove("http://www.netbian.comhttps://pic.netbian.com/")        
+        print(url_list)       
         for i in url_list:
             # print(i)
             get_download_resp=requests.get(i)
@@ -34,15 +32,13 @@ for i in range(1,1209):
             for i in find_a:
                 src=i.get("src")
                 img_resp=requests.get(src)
-                img_name=src.split("/")[-1] #命名图片名字
-        
+                img_name=src.split("/")[-1] #命名图片名字       
                 with open("img/"+img_name,mode='wb') as f:
                     f.write(img_resp.content) #拿到字节并写进文件
                 print('download success',img_name)
         f.close()
         pass
     else:
-
         url = f'http://www.netbian.com/index_{i}.htm'
         resp = requests.get(url)
         resp.encoding = "gbk"  # 处理乱码
@@ -52,20 +48,14 @@ for i in range(1,1209):
         obj = BeautifulSoup(resp_text, "html.parser")
         div = obj.find('div', class_="list").find_all("a")
         # print(div)
-
         url_list = []  # 储存url链接
         for i in div:
             src_download = 'http://www.netbian.com'+ i.get("href")
             url_list.append(src_download)
-
         # 删除重复错误的的链接
-
         url_list.remove("http://www.netbian.comhttps://pic.netbian.com/")
         url_list.remove("http://www.netbian.comhttps://pic.netbian.com/")
-
         print(url_list)
-
-
         for i in url_list:
             # print(i)
             get_download_resp = requests.get(i)
