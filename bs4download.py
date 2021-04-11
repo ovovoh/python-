@@ -1,6 +1,8 @@
 # 1.拿主页面源代码
 # 2.解析源代码拿到链接
 import requests
+from bs4 import BeautifulSoup
+import time
 for i in range(1,1209):
     if i==1:
         url = 'http://www.netbian.com'
